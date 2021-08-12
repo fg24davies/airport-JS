@@ -1,0 +1,26 @@
+{
+  "name": "airport",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fg24davies/airport-JS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fg24davies/airport-JS/issues"
+  },
+  "homepage": "https://github.com/fg24davies/airport-JS#readme",
+  "devDependencies": {
+    "jest": "^27.0.6"
+  },
+  "jest": {
+    "collectCoverage": true
+  }
+}
