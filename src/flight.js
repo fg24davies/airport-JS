@@ -1,11 +1,10 @@
-const Airport = require("./airport");
+import Airport from "./airport";
 
-class Flight {
+export default class Flight {
   constructor(departure = new Airport()) {
     this.departure = departure;
+    console.log(this.departure);
     departure.gates.push(this);
     this.inFlight = false;
   }
 }
-
-module.exports = Flight;

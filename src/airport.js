@@ -1,7 +1,7 @@
-const Flight = require("./flight");
-const Weather = require("./weather");
+import Flight from "./flight";
+import Weather from "./weather";
 
-class Airport {
+export default class Airport {
   constructor(capacity = 20) {
     this.capacity = capacity;
     this.gates = [];
@@ -19,7 +19,7 @@ class Airport {
   }
 
   takeOff(flight) {
-    if (this.weather.conditions() === "Stormy") {
+    if (this.isStormy()) {
       throw new Error("Conditions are stormy: Flight cannot take off");
     }
     let index = this.gates.indexOf(flight);
@@ -34,5 +34,3 @@ class Airport {
     return this.gates.length === this.capacity;
   }
 }
-
-module.exports = Airport;
