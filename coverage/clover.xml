@@ -1,24 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1628863620692" clover="3.2.0">
-  <project timestamp="1628863620693" name="All files">
-    <metrics statements="12" coveredstatements="12" conditionals="3" coveredconditionals="1" methods="4" coveredmethods="4" elements="19" coveredelements="17" complexity="0" loc="12" ncloc="12" packages="1" files="2" classes="2"/>
+<coverage generated="1628871482350" clover="3.2.0">
+  <project timestamp="1628871482350" name="All files">
+    <metrics statements="22" coveredstatements="21" conditionals="8" coveredconditionals="5" methods="6" coveredmethods="5" elements="36" coveredelements="31" complexity="0" loc="22" ncloc="22" packages="1" files="3" classes="3"/>
     <file name="airport.js" path="/Users/floradavies/Projects/post_makers_projects/airport/src/airport.js">
-      <metrics statements="7" coveredstatements="7" conditionals="1" coveredconditionals="1" methods="3" coveredmethods="3"/>
+      <metrics statements="15" coveredstatements="15" conditionals="5" coveredconditionals="5" methods="4" coveredmethods="4"/>
       <line num="1" count="1" type="stmt"/>
-      <line num="5" count="9" type="stmt"/>
-      <line num="6" count="9" type="stmt"/>
-      <line num="10" count="1" type="stmt"/>
+      <line num="2" count="1" type="stmt"/>
+      <line num="6" count="15" type="stmt"/>
+      <line num="7" count="15" type="stmt"/>
+      <line num="8" count="15" type="stmt"/>
+      <line num="12" count="3" type="stmt"/>
+      <line num="13" count="3" type="cond" truecount="2" falsecount="0"/>
       <line num="14" count="1" type="stmt"/>
-      <line num="15" count="1" type="stmt"/>
-      <line num="19" count="1" type="stmt"/>
+      <line num="17" count="2" type="cond" truecount="2" falsecount="0"/>
+      <line num="18" count="1" type="stmt"/>
+      <line num="20" count="1" type="stmt"/>
+      <line num="25" count="1" type="stmt"/>
+      <line num="26" count="1" type="stmt"/>
+      <line num="30" count="2" type="stmt"/>
+      <line num="34" count="1" type="stmt"/>
     </file>
     <file name="flight.js" path="/Users/floradavies/Projects/post_makers_projects/airport/src/flight.js">
-      <metrics statements="5" coveredstatements="5" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <metrics statements="5" coveredstatements="5" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <line num="1" count="1" type="stmt"/>
-      <line num="5" count="4" type="stmt"/>
-      <line num="6" count="4" type="stmt"/>
-      <line num="7" count="4" type="stmt"/>
-      <line num="12" count="1" type="stmt"/>
+      <line num="5" count="7" type="stmt"/>
+      <line num="6" count="7" type="stmt"/>
+      <line num="7" count="7" type="stmt"/>
+      <line num="11" count="1" type="stmt"/>
+    </file>
+    <file name="weather.js" path="/Users/floradavies/Projects/post_makers_projects/airport/src/weather.js">
+      <metrics statements="2" coveredstatements="1" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <line num="3" count="0" type="cond" truecount="0" falsecount="2"/>
+      <line num="7" count="1" type="stmt"/>
     </file>
   </project>
 </coverage>
