@@ -1,12 +1,11 @@
+const Airport = require("./airport");
+
 class Flight {
-  constructor(number, departure, arrival) {
-    this.number = number;
+  constructor(departure = new Airport(), arrival = new Airport()) {
     this.departure = departure;
     this.arrival = arrival;
-  }
-
-  landAt(airport) {
-    airport.gates.push(this);
+    departure.gates.push(this);
+    // this.inFlight = false;
   }
 }
 

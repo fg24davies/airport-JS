@@ -1,8 +1,18 @@
+const Flight = require("./flight");
+
 class Airport {
-  constructor(name, capacity = 20) {
-    this.name = name;
+  constructor(capacity = 20) {
     this.capacity = capacity;
     this.gates = [];
+  }
+
+  land(flight) {
+    this.gates.push(flight);
+  }
+
+  takeOff(flight) {
+    let index = this.gates.indexOf(flight);
+    this.gates.splice(index, 1);
   }
 }
 
