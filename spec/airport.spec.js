@@ -12,26 +12,26 @@ describe("Airport", () => {
     //console.log(flight);
   });
 
-  test("can land at an airport", () => {
+  test("can land a flight", () => {
     airport2.land(flight);
     expect(airport2.gates.includes(flight)).toEqual(true);
   });
 
-  test("can take off at an airport", () => {
+  test("can take off a flight", () => {
     airport1.takeOff(flight);
     expect(airport1.gates.includes(flight)).toEqual(false);
   });
 
-  test("all have default capacity of 20", () => {
+  test("has default capacity of 20", () => {
     expect(airport1.capacity).toEqual(20);
   });
 
-  test("airport's capacity can be overridden to 12", () => {
+  test("capacity can be overridden", () => {
     airport = new Airport(12);
     expect(airport.capacity).toEqual(12);
   });
 
-  test("plane cannot land when Airport is at capacity", () => {
+  test("cannot land flight when at capacity", () => {
     airport = new Airport(1);
     flight1 = new Flight(airport);
     expect(() => {
@@ -39,7 +39,7 @@ describe("Airport", () => {
     }).toThrowError("Airport gates are full"); //throw error exception has to be in a callback in Jest otherwise error will not be caught and assertion will fail
   });
 
-  test("cannot land a plane in stormy weather", () => {
+  test("cannot land a flight in stormy weather", () => {
     const mockConditions = jest.fn();
     Weather.prototype.conditions = mockConditions;
     mockConditions.mockReturnValue("Stormy");
