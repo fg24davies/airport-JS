@@ -9,21 +9,25 @@ class Airport {
   }
 
   land(flight) {
-    console.log(this.weather.conditions());
-    if (this.weather.conditions() === "Stormy") {
+    if (this.isStormy()) {
       throw new Error("Conditions are stormy: Flight cannot land");
     }
-
     if (this.isFull()) {
       throw new Error("Airport gates are full");
-    } else {
-      this.gates.push(flight);
     }
+    this.gates.push(flight);
   }
 
   takeOff(flight) {
+    if (this.weather.conditions() === "Stormy") {
+      throw new Error("Conditions are stormy: Flight cannot take off");
+    }
     let index = this.gates.indexOf(flight);
     this.gates.splice(index, 1);
+  }
+
+  isStormy() {
+    return this.weather.conditions() === "Stormy";
   }
 
   isFull() {

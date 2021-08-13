@@ -48,4 +48,14 @@ describe("Airport", () => {
       stormyAirport.land(flight);
     }).toThrowError("Conditions are stormy: Flight cannot land");
   });
+
+  test("cannot takeoff a flight in stormy weather", () => {
+    const mockConditions = jest.fn();
+    Weather.prototype.conditions = mockConditions;
+    mockConditions.mockReturnValue("Stormy");
+    stormyAirport = new Airport(); // this has to be after the mocking because new Weather is instantiated when Airport is instantiated
+    expect(() => {
+      stormyAirport.takeOff(flight);
+    }).toThrowError("Conditions are stormy: Flight cannot take off");
+  });
 });
