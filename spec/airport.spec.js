@@ -8,7 +8,6 @@ describe("Airport", () => {
   const airport1 = new Airport();
   const airport2 = new Airport();
   const flight = new Flight(airport1);
-  console.log("flight on creation is not flying:", flight.isFlying);
   Weather.mockClear();
   // Flight.mockClear()
   // console.log(flight);
@@ -64,7 +63,6 @@ describe("Airport", () => {
   test("cannot take off a flight that is already in the air", () => {
     const flight1 = new Flight(airport1); // new flight created at airport - not flying
     airport1.takeOff(flight1); // take off flight
-    console.log("flight after takeoff is in the air:", flight1.isFlying); // should now be flying
     expect(flight.isFlying).toEqual(true);
     expect(() => {
       airport1.takeOff(flight1);
