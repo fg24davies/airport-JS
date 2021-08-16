@@ -22,6 +22,10 @@ export default class Airport {
     if (this.isStormy()) {
       throw new Error("Conditions are stormy: Flight cannot take off");
     }
+    if (flight.isFlying === true) {
+      throw new Error("Flight is already in the air");
+    }
+    flight.isFlying = true;
     let index = this.gates.indexOf(flight);
     this.gates.splice(index, 1);
   }

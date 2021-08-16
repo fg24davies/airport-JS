@@ -8,6 +8,7 @@ describe("Airport", () => {
   const airport1 = new Airport();
   const airport2 = new Airport();
   const flight = new Flight(airport1);
+  console.log("flight on creation is not flying:", flight.isFlying);
   Weather.mockClear();
   // Flight.mockClear()
   // console.log(flight);
@@ -19,6 +20,7 @@ describe("Airport", () => {
 
   test("can take off a flight", () => {
     airport1.takeOff(flight);
+    expect(flight.isFlying).toEqual(true);
     expect(airport1.gates.includes(flight)).toEqual(false);
   });
 
@@ -32,10 +34,10 @@ describe("Airport", () => {
   });
 
   test("cannot land flight when at capacity", () => {
-    let airport = new Airport(1);
-    let flight1 = new Flight(airport);
+    let airport3 = new Airport(1);
+    let flight3 = new Flight(airport3);
     expect(() => {
-      airport.land(flight);
+      airport3.land(flight);
     }).toThrowError("Airport gates are full"); //throw error exception has to be in a callback in Jest otherwise error will not be caught and assertion will fail
   });
 
@@ -60,9 +62,12 @@ describe("Airport", () => {
   });
 
   test("cannot take off a flight that is already in the air", () => {
-    airport1.takeOff(flight);
+    const flight1 = new Flight(airport1); // new flight created at airport - not flying
+    airport1.takeOff(flight1); // take off flight
+    console.log("flight after takeoff is in the air:", flight1.isFlying); // should now be flying
+    expect(flight.isFlying).toEqual(true);
     expect(() => {
-      airport1.takeOff(flight);
+      airport1.takeOff(flight1);
     }).toThrowError("Flight is already in the air"); //throw error exception has to be in a callback in Jest otherwise error will not be caught and assertion will fail
   });
 });
