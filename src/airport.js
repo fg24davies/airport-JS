@@ -15,6 +15,10 @@ export default class Airport {
     if (this.isFull()) {
       throw new Error("Airport gates are full");
     }
+    if (flight.isFlying != true) {
+      throw new Error("Flight is not in the air");
+    }
+
     this.gates.push(flight);
   }
 

@@ -9,16 +9,17 @@ describe("Airport", () => {
   const airport2 = new Airport();
   const flight = new Flight(airport1);
   Weather.mockClear();
+
   // Flight.mockClear()
   // console.log(flight);
 
   test("can land a flight", () => {
+    airport1.takeOff(flight);
     airport2.land(flight);
     expect(airport2.gates.includes(flight)).toEqual(true);
   });
 
   test("can take off a flight", () => {
-    airport1.takeOff(flight);
     expect(flight.isFlying).toEqual(true);
     expect(airport1.gates.includes(flight)).toEqual(false);
   });
@@ -67,5 +68,12 @@ describe("Airport", () => {
     expect(() => {
       airport1.takeOff(flight1);
     }).toThrowError("Flight is already in the air"); //throw error exception has to be in a callback in Jest otherwise error will not be caught and assertion will fail
+  });
+
+  test("cannot land a flight that is not in the air", () => {
+    const flight1 = new Flight(airport1); // new flight created at airport - not flying
+    expect(() => {
+      airport2.land(flight1);
+    }).toThrowError("Flight is not in the air"); //throw error exception has to be in a callback in Jest otherwise error will not be caught and assertion will fail
   });
 });

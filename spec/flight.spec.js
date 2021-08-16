@@ -6,7 +6,7 @@ describe("Flight", () => {
   let flight = new Flight();
 
   test("is not airborne when created", () => {
-    expect(flight.inFlight).toEqual(false);
+    expect(flight.isFlying).toEqual(false);
   });
 });
 
