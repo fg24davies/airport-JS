@@ -12,15 +12,7 @@ describe("Airport", () => {
     airport2 = new Airport();
     flight = new Flight(airport1);
     Weather.mockClear();
-    //mockConditions.mockReset();
   });
-
-  afterEach(() => {
-    Weather.mockReset();
-  });
-
-  // Flight.mockClear()
-  // console.log(flight);
 
   test("can land a flight", () => {
     airport1.takeOff(flight);
@@ -67,8 +59,9 @@ describe("Airport", () => {
     Weather.prototype.conditions = mockConditions;
     mockConditions.mockReturnValue("Stormy");
     let stormyAirport = new Airport(); // this has to be after the mocking because new Weather is instantiated when Airport is instantiated
+    let stormyFlight = new Flight(stormyAirport);
     expect(() => {
-      stormyAirport.takeOff(flight);
+      stormyAirport.takeOff(stormyFlight);
     }).toThrowError("Conditions are stormy: Flight cannot take off");
     mockConditions.mockReset();
   });
@@ -87,5 +80,11 @@ describe("Airport", () => {
     expect(() => {
       airport2.land(flight);
     }).toThrowError("Flight is not in the air"); //throw error exception has to be in a callback in Jest otherwise error will not be caught and assertion will fail
+  });
+
+  test("cannot take off a flight that is not in that airport", () => {
+    expect(() => {
+      airport2.takeOff(flight);
+    }).toThrowError("Flight is not at this airport");
   });
 });
