@@ -14,7 +14,7 @@ export default class Airport {
     if (this.isFull()) {
       throw new Error("Airport gates are full");
     }
-    if (flight.isFlying != true) {
+    if (!this.isFlying(flight)) {
       throw new Error("Flight is not in the air");
     }
 
@@ -22,7 +22,7 @@ export default class Airport {
   }
 
   takeOff(flight) {
-    if (flight.isFlying === true) {
+    if (this.isFlying(flight)) {
       throw new Error("Flight is already in the air");
     }
     if (!this.gates.includes(flight)) {
@@ -43,5 +43,9 @@ export default class Airport {
 
   isFull() {
     return this.gates.length === this.capacity;
+  }
+
+  isFlying(flight) {
+    return flight.isFlying === true;
   }
 }
