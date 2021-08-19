@@ -1,5 +1,5 @@
 jest.mock("../src/weather");
-// jest.mock("../src/flight");
+jest.mock("../src/flight");
 import Airport from "../src/airport";
 import Flight from "../src/flight";
 import Weather from "../src/weather";
@@ -12,14 +12,15 @@ describe("Airport", () => {
     airport2 = new Airport();
     //flight = new Flight(airport1);
     Weather.mockClear();
-    //Flight.mockClear();
-    // Flight.mockImplementation(() => ({
-    //   departure: airport1,
-    //   isFlying: false,
-    // }));
+    Flight.mockClear();
+    Flight.mockImplementation(() => ({
+      departure: airport1,
+      isFlying: false,
+    }));
     flight = new Flight(airport1);
-    //airport1.gates.push(flight);
-    //console.log("flight instance:", flight);
+    airport1.gates.push(flight);
+    console.log("flight instance:", flight);
+    //console.log("weather conditions", Weather.conditions);
   });
 
   test("can land a flight", () => {
@@ -44,8 +45,10 @@ describe("Airport", () => {
   });
 
   test("cannot land flight when at capacity", () => {
+    airport1.takeOff(flight);
     let smallAirport = new Airport(1);
-    let flight3 = new Flight(smallAirport); // create flight at small airport
+    let flight3 = new Flight(smallAirport);
+    smallAirport.gates.push(flight3); // because my mock Flight mock isn't working correctly I have to add this line here to make the flight go into the airport
     expect(() => {
       smallAirport.land(flight);
     }).toThrowError("Airport gates are full"); //throw error exception has to be in a callback in Jest otherwise error will not be caught and assertion will fail
@@ -68,6 +71,7 @@ describe("Airport", () => {
     mockConditions.mockReturnValue("Stormy");
     let stormyAirport = new Airport(); // this has to be after the mocking because new Weather is instantiated when Airport is instantiated
     let stormyFlight = new Flight(stormyAirport);
+    stormyAirport.gates.push(stormyFlight); // because my mock Flight mock isn't working correctly I have to add this line here to make the flight go into the airport
     expect(() => {
       stormyAirport.takeOff(stormyFlight);
     }).toThrowError("Conditions are stormy: Flight cannot take off");
