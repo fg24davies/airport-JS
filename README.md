@@ -1,14 +1,5 @@
 # Airport Simulation in JavaScript
 
-To do:
-
-[] mock the flight class in the airport (Weather is stubbed and mocked already)
-[] rearrange tests for clarity of reading
-
-| input               | output         |
-| ------------------- | -------------- |
-| airport.land(plane) | airport.hangar |
-
 ```
 As an air traffic controller
 So I can get passengers to a destination
