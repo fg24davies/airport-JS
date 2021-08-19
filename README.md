@@ -1,11 +1,9 @@
 # Airport Simulation in JavaScript
 
-Classes for user story 1
-Plane
-Airport
+To do:
 
-Methods
-land
+[] mock the flight class in the airport (Weather is stubbed and mocked already)
+[] rearrange tests for clarity of reading
 
 | input               | output         |
 | ------------------- | -------------- |

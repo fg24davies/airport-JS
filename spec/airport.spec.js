@@ -1,8 +1,8 @@
+jest.mock("../src/weather");
+// jest.mock("../src/flight");
 import Airport from "../src/airport";
 import Flight from "../src/flight";
 import Weather from "../src/weather";
-jest.mock("../src/weather");
-//jest.mock("../src/flight");
 
 describe("Airport", () => {
   let airport1, airport2, flight;
@@ -10,8 +10,16 @@ describe("Airport", () => {
   beforeEach(() => {
     airport1 = new Airport();
     airport2 = new Airport();
-    flight = new Flight(airport1);
+    //flight = new Flight(airport1);
     Weather.mockClear();
+    //Flight.mockClear();
+    // Flight.mockImplementation(() => ({
+    //   departure: airport1,
+    //   isFlying: false,
+    // }));
+    flight = new Flight(airport1);
+    //airport1.gates.push(flight);
+    //console.log("flight instance:", flight);
   });
 
   test("can land a flight", () => {
@@ -67,7 +75,6 @@ describe("Airport", () => {
   });
 
   test("cannot take off a flight that is already in the air", () => {
-    //const flight1 = new Flight(airport1); // new flight created at airport - not flying
     airport1.takeOff(flight); // take off flight
     expect(flight.isFlying).toEqual(true);
     expect(() => {
@@ -76,7 +83,6 @@ describe("Airport", () => {
   });
 
   test("cannot land a flight that is not in the air", () => {
-    //const flight1 = new Flight(airport1); // new flight created at airport - not flying
     expect(() => {
       airport2.land(flight);
     }).toThrowError("Flight is not in the air"); //throw error exception has to be in a callback in Jest otherwise error will not be caught and assertion will fail

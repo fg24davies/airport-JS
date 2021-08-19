@@ -9,9 +9,3 @@ describe("Flight", () => {
     expect(flight.isFlying).toEqual(false);
   });
 });
-
-// i need to add new 'let' to all the f
-
-// is import export better syntax?
-
-//
